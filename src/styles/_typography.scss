@@ -1,0 +1,68 @@
+@import './fonts';
+
+$font-default: 'ProductSans', Arial, sans-serif !default;
+
+$font-italic: 'ProductSansItalic';
+
+@mixin text-strong() {
+  font-weight: 700;
+}
+
+@mixin text-bold() {
+  font-weight: 600;
+}
+
+@mixin text-italic() {
+  font-family: $font-italic;
+  font-weight: 400;
+}
+
+@mixin heading-xl() {
+  font-family: $font-default;
+  font-size: 36px;
+  -webkit-font-smoothing: auto;
+}
+
+@mixin heading-l() {
+  font-family: $font-default;
+  font-weight: 700;
+  font-size: 20px;
+  -webkit-font-smoothing: auto;
+}
+
+@mixin heading-m() {
+  font-family: $font-default;
+  font-size: 24px;
+  -webkit-font-smoothing: auto;
+}
+
+@mixin heading() {
+  font-family: $font-default;
+  font-size: 16px;
+  -webkit-font-smoothing: auto;
+}
+
+@mixin text-regular() {
+  font-family: $font-default;
+  font-size: 14px;
+  -webkit-font-smoothing: auto;
+}
+
+@mixin text-small-bold() {
+  font-family: $font-default;
+  @include text-strong();
+  font-size: 12px;
+  -webkit-font-smoothing: auto;
+}
+
+@mixin text-small() {
+  font-family: $font-default;
+  font-size: 12px;
+  -webkit-font-smoothing: auto;
+}
+
+@mixin text-extra-small() {
+  font-family: $font-default;
+  font-size: 10px;
+  -webkit-font-smoothing: auto;
+}

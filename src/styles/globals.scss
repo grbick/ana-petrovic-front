@@ -1,0 +1,295 @@
+@import "./mixins";
+@import "./typography";
+@import "./colours";
+@import "./breakpoints";
+
+* {
+  font-family: "Roboto" !important;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  scroll-margin-top: 48px;
+}
+
+html,
+body,
+div#root {
+  height: 100%;
+  width: 100%;
+}
+
+.w-100 {
+  width: 100%;
+}
+
+.w-75 {
+  width: 75%;
+}
+
+.w-50 {
+  width: 50%;
+}
+
+.w-25 {
+  width: 25%;
+}
+
+.w {
+  &-250 {
+    width: 250px;
+  }
+}
+
+.min-width {
+  &-200 {
+    min-width: 200px;
+  }
+
+  &-250 {
+    min-width: 250px;
+  }
+
+  &-300 {
+    min-width: 300px;
+  }
+}
+
+.m {
+  &b-1r {
+    margin-bottom: 1rem;
+  }
+  &b-2r {
+    margin-bottom: 2rem;
+  }
+}
+
+.requestsForm {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.hide {
+  display: none;
+}
+
+h2 {
+  letter-spacing: 0.5px;
+  line-height: 25px;
+}
+
+.mb-0 {
+  margin-bottom: 0;
+}
+
+.flex {
+  display: flex;
+}
+
+.flexColumn {
+  display: flex;
+  flex-direction: column;
+}
+
+.textBold {
+  font-weight: bold;
+}
+
+.textHeavy {
+  font-weight: 700;
+}
+
+.spaceBetween {
+  display: flex;
+  justify-content: space-between;
+}
+
+.flexStart {
+  display: flex;
+  justify-content: flex-start !important;
+}
+
+.flexEnd {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.spaceAround {
+  display: flex;
+  justify-content: space-around;
+}
+
+.alignItemsCenter {
+  display: flex;
+  align-items: center;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.gap {
+  &-1 {
+    gap: 1rem;
+  }
+  &-10 {
+    gap: 10px;
+  }
+}
+
+.alignLeft {
+  text-align: left;
+}
+
+.alignRight {
+  text-align: right;
+}
+
+.alignCenter {
+  text-align: center;
+}
+
+.fullWidthBtn {
+  & button {
+    width: 100%;
+  }
+}
+
+.color-primary {
+  color: var(--text-primary);
+}
+
+.center {
+  @include xy-center();
+}
+
+.yCenter {
+  @include x-center();
+}
+
+.xCenter {
+  @include y-center();
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.cursorDefault {
+  cursor: default;
+}
+
+.text-ellipsis {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.orangePrimary {
+  color: var(--primary);
+}
+
+.orangeLight {
+  color: $orange-light;
+}
+
+.grayLight {
+  color: $gray-light;
+}
+
+.textLight {
+  color: $text-light;
+}
+
+.bluePrimary {
+  color: $blue-primary;
+}
+
+.colorWarning {
+  color: $warning-red;
+}
+
+@for $percent from 0 through 100 {
+  .w-#{$percent} {
+    width: #{$percent + "%"} !important;
+  }
+
+  .h-#{$percent} {
+    height: #{$percent + "%"} !important;
+  }
+}
+
+@for $pixel from 0 through 1000 {
+  .p-#{$pixel} {
+    padding: #{$pixel + "px"} !important;
+  }
+
+  .pt-#{$pixel} {
+    padding-top: #{$pixel + "px"} !important;
+  }
+
+  .pr-#{$pixel} {
+    padding-right: #{$pixel + "px"} !important;
+  }
+
+  .pb-#{$pixel} {
+    padding-bottom: #{$pixel + "px"} !important;
+  }
+
+  .pl-#{$pixel} {
+    padding-left: #{$pixel + "px"} !important;
+  }
+
+  .mt-#{$pixel} {
+    margin-top: #{$pixel + "px"} !important;
+  }
+
+  .mr-#{$pixel} {
+    margin-right: #{$pixel + "px"} !important;
+  }
+
+  .mb-#{$pixel} {
+    margin-bottom: #{$pixel + "px"} !important;
+  }
+
+  .ml-#{$pixel} {
+    margin-left: #{$pixel + "px"} !important;
+  }
+}
+
+// experimental , try to find better solution
+
+@for $pixel from 1 through 3000 {
+  .tableHeight-#{$pixel} {
+    max-height: #{"calc(100vh - " + $pixel + "px)"} !important;
+    min-height: #{"calc(100vh - " + $pixel + "px)"} !important;
+  }
+}
+
+//quill text-editor override
+
+div.ql-editor {
+  min-height: 10rem;
+}
+
+.pageBody {
+  padding: 1rem 4rem;
+}
+
+.Toastify__toast-container--top-right {
+  margin-top: 3rem;
+}
+
+.infinite-scroll-component::-webkit-scrollbar {
+  display: none;
+}
+
+@media screen and (max-width: $screen-md-min) {
+  .spaceBetween {
+    display: flex;
+    flex-direction: column;
+  }
+}

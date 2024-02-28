@@ -1,0 +1,198 @@
+@import 'breakpoints';
+@import 'typography';
+@import 'colours';
+
+// $screen-xs-min: 384px;
+// $screen-sm-min: 576px;
+// $screen-md-min: 768px;
+// $screen-lg-min: 992px;
+// $screen-xl-min: 1200px;
+// $screen-xxl-min: 1440px;
+
+// Extra small devices
+
+@mixin xs {
+  @media (min-width: #{$screen-xs-min}) {
+    @content;
+  }
+}
+
+@mixin xs-max {
+  @media (max-width: #{$screen-xs-min}) {
+    @content;
+  }
+}
+
+// Small devices
+
+@mixin sm {
+  @media (min-width: #{$screen-sm-min}) {
+    @content;
+  }
+}
+
+@mixin sm-max {
+  @media (max-width: #{$screen-sm-min}) {
+    @content;
+  }
+}
+
+// Medium devices
+@mixin md {
+  @media (min-width: #{$screen-md-min}) {
+    @content;
+  }
+}
+
+@mixin md-max {
+  @media (max-width: #{$screen-md-min}) {
+    @content;
+  }
+}
+
+// Large devices
+@mixin lg {
+  @media (min-width: #{$screen-lg-min}) {
+    @content;
+  }
+}
+
+@mixin lg-max {
+  @media (max-width: #{$screen-lg-min}) {
+    @content;
+  }
+}
+
+// Extra large devices
+@mixin xl {
+  @media (min-width: #{$screen-xl-min}) {
+    @content;
+  }
+}
+
+@mixin xl-max {
+  @media (max-width: #{$screen-xl-min}) {
+    @content;
+  }
+}
+
+@mixin xxl {
+  @media (min-width: #{$screen-xxl-min}) {
+    @content;
+  }
+}
+
+@mixin xxl-max {
+  @media (max-width: #{$screen-xxl-min}) {
+    @content;
+  }
+}
+
+@mixin mobile-hidden {
+  @include sm-max {
+    display: none !important;
+  }
+}
+
+@mixin visible-mobile-up {
+  display: none !important;
+
+  @include md {
+    display: flex !important;
+  }
+}
+
+@mixin visible-mobile-down {
+  @include md {
+    display: none !important;
+  }
+}
+
+@mixin visible-tablet-up {
+  display: none !important;
+
+  @include lg {
+    display: flex !important;
+  }
+}
+
+@mixin visible-tablet-down {
+  @include lg {
+    display: none !important;
+  }
+}
+
+@mixin visible-desktop-up {
+  display: none !important;
+
+  @include xl {
+    display: flex !important;
+  }
+}
+
+@mixin visible-desktop-down {
+  @include xl {
+    display: none !important;
+  }
+}
+
+@mixin no-user-select {
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Old versions of Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Non-prefixed version, currently */
+}
+
+@mixin trim-text {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+@mixin vertical-align {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+@mixin xy-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin y-center {
+  display: flex;
+  justify-content: center;
+}
+
+@mixin x-center {
+  display: flex;
+  align-items: center;
+}
+
+@mixin max-height {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+@mixin space-between {
+  display: flex;
+  justify-content: space-between;
+}
+
+// Usage specific
+
+@mixin exam-tab-padding {
+  padding: 32px 48px;
+}
+
+@mixin exam-wizard-label-font() {
+  @include text-small-bold();
+  color: $brand-dark;
+  text-transform: uppercase;
+}

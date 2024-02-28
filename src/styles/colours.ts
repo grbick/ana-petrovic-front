@@ -1,0 +1,32 @@
+// This file should be in sync with _colours.scss
+// So we can use same variables in ts files if required
+
+export const colours = {
+  white: '#fff',
+  lightBlue: '#e5f1f9',
+  blue: '#0364ca',
+  warningBackground: '#fff1f0',
+  warningBorder: '#ffccc7',
+  $textBlack: ' black',
+  backgroundWhite: ' white',
+  hoverGray: '#fafafa',
+  warningRed: '#c7363d',
+  successBackground: '#f1ffe4',
+  successGreen: '#499401',
+  successLightGreen: '#37b323',
+  brandDark: '#203963',
+  primaryLight: '#659ad1',
+  primaryMedium: '#5c8dc0',
+  primaryDark: '#4f79a5',
+  alertPail: '#fff1f0',
+  alertLight: '#d7556d',
+  alertMedium: '#bd4359',
+  alertDark: '#a73348',
+  confirmLight: '#8cd280',
+  confirmMedium: '#82c078',
+  confirmDark: '#6ea565',
+  neutralPail: '#f5f5f5',
+  neutralLight: '#c8c2c2',
+  neutralMedium: '#b5aeae',
+  neutralDark: '#9b9b9b',
+};

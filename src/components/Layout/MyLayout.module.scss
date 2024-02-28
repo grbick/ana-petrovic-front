@@ -1,0 +1,38 @@
+@import "/src/styles/breakpoints";
+
+.page {
+  width: 100%;
+  height: 100%;
+  overflow-y: hidden;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  overflow-y: scroll;
+  background-color: var(--bg-primary) !important;
+
+  &::-webkit-scrollbar {
+    width: 5px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: var(--primary);
+    border-radius: 5px;
+  }
+}
+
+.header {
+  padding-inline: 0;
+  height: 48px;
+}
+
+@media screen and (max-width: $screen-md-min) {
+  .sider2 {
+    transform: translateX(0);
+    position: absolute !important;
+    top: 48px;
+    z-index: 1005;
+    height: calc(100% - 48px) !important;
+  }
+}
