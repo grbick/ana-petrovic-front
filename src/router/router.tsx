@@ -5,10 +5,17 @@ import { LoginPage } from "../pages/LoginPage/LoginPage";
 import { ErrorPage } from "../components/ErrorPage/ErrorPage";
 import MyLayout from "../components/Layout/MyLayout";
 
-const CalendarPage = loadable(
-  () => import("../pages/CalendarPage/CalendarPage")
+const SchedulePage = loadable(
+  () => import("../pages/SchedulePage/SchedulePage")
 );
 const LandingPage = loadable(() => import("../pages/LandingPage/LandingPage"));
+const ActivePatientsPage = loadable(
+  () => import("../pages/PatientsPage/ActivePatientsPage/ActivePatientsPage")
+);
+const ArchivedPatientsPage = loadable(
+  () =>
+    import("../pages/PatientsPage/ArchivedPatientsPage/ArchivedPatientsPage")
+);
 
 export const router = createBrowserRouter([
   {
@@ -17,13 +24,22 @@ export const router = createBrowserRouter([
     element: <MyLayout />,
     children: [
       {
-        path: "/calendar",
-        element: <CalendarPage />,
-      },
-      {
         path: "/home",
         element: <LandingPage />,
       },
+      {
+        path: "/patients/active",
+        element: <ActivePatientsPage />,
+      },
+      {
+        path: "/patients/archive",
+        element: <ArchivedPatientsPage />,
+      },
+      {
+        path: "/schedule",
+        element: <SchedulePage />,
+      },
+      { path: "*", element: <Navigate to="/home" replace /> },
     ],
   },
   {
