@@ -8,6 +8,7 @@ import SideBar from "../SideBar/SideBar";
 import styles from "./MyLayout.module.scss";
 import { useEffect } from "react";
 import { authStore } from "../../modules/auth/auth.store";
+import Sider from "antd/es/layout/Sider";
 
 const MyLayout = () => {
   const navigate = useNavigate();
@@ -19,11 +20,13 @@ const MyLayout = () => {
 
   return (
     <Layout className={styles.page}>
-      <SideBar />
+      <Header className={styles.header}>
+        <MyHeader />
+      </Header>
       <Layout>
-        <Header className={styles.header}>
-          <MyHeader />
-        </Header>
+        <Sider className={styles.sider}>
+          <SideBar />
+        </Sider>
         <Content className={styles.content}>
           <Outlet />
         </Content>

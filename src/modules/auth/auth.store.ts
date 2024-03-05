@@ -3,13 +3,37 @@ import { IUserData } from "./auth.types";
 import { authService } from "./auth.service";
 import to from "await-to-js";
 import { NavigateFunction } from "react-router-dom";
+import { ROLES, USER_ACCESS_MAP } from "./auth.constants";
+
+const getHasAccess = (userRoles: ROLES[], availableRolesList: ROLES[]) => {
+  if (userRoles.includes(ROLES.ADMIN)) return true;
+  return availableRolesList.some((availableRole) =>
+    userRoles.includes(availableRole)
+  );
+};
+
+const getRoleAccess = (roles: ROLES[]) => {
+  return {
+    ANALYTICS: {
+      read: getHasAccess(roles, USER_ACCESS_MAP.ANALYTICS.read),
+      write: getHasAccess(roles, USER_ACCESS_MAP.ANALYTICS.write),
+    },
+  };
+};
 
 class AuthStore {
   constructor() {
     makeAutoObservable(this);
   }
+  get rbac() {
+    return getRoleAccess([this.userData.role]);
+  }
 
-  userData!: IUserData | null;
+  userData: IUserData = {
+    username: "koki",
+    email: "koki",
+    role: ROLES.ADMIN,
+  };
 
   isLoggedIn: boolean = true;
 

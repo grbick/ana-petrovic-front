@@ -1,13 +1,7 @@
-export enum RoleEnum {
-  ADMIN = "ADMIN",
-  NUTRITIONIST = "NUTRITIONIST",
-  DOCTOR = "DOCTOR",
-  FINANCE = "FINANCE",
-  CLIENT = "CLIENT",
-}
+import { ROLES } from "./auth.constants";
 
 export interface IUserData {
   username: string;
   email: string;
-  role: RoleEnum;
+  role: ROLES;
 }
