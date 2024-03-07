@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@ant-design/icons": "^5.3.1",
+    "@auth0/auth0-react": "^2.2.4",
     "@loadable/component": "^5.15.3",
     "antd": "^5.14.2",
     "await-to": "^0.1.0",

@@ -12,10 +12,11 @@ export const SideBarMenu = observer(() => {
   const { pathname } = useLocation();
 
   const navigate = useNavigate();
+  if (!authStore.userData) return;
 
-  const routes = ROUTE_CONFIG[authStore.userData!.role].filter(
-    (r) => !r.hideInMenu
-  );
+  const routes = ROUTE_CONFIG[
+    authStore.userData["http://localhost:5173/roles"][0]
+  ].filter((r) => !r.hideInMenu);
 
   const flatRoutes = flattenRoutes(routes);
 

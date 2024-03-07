@@ -1,8 +1,5 @@
-import { makeAutoObservable, runInAction } from "mobx";
+import { action, makeAutoObservable, observable } from "mobx";
 import { IUserData } from "./auth.types";
-import { authService } from "./auth.service";
-import to from "await-to-js";
-import { NavigateFunction } from "react-router-dom";
 import { ROLES, USER_ACCESS_MAP } from "./auth.constants";
 
 const getHasAccess = (userRoles: ROLES[], availableRolesList: ROLES[]) => {
@@ -23,31 +20,35 @@ const getRoleAccess = (roles: ROLES[]) => {
 
 class AuthStore {
   constructor() {
-    makeAutoObservable(this);
+    makeAutoObservable(this),
+      {
+        userData: observable,
+        userAuthenticated: observable,
+        setUserAuthenticated: action,
+      };
   }
+
+  get roles() {
+    return this.userData?.["http://localhost:5173/roles"] || [];
+  }
+
+  get primaryRole() {
+    return this.roles?.[0];
+  }
+
   get rbac() {
-    return getRoleAccess([this.userData.role]);
+    if (this.userData) return getRoleAccess([this.userData.role]);
   }
 
-  userData: IUserData = {
-    username: "koki",
-    email: "koki",
-    role: ROLES.ADMIN,
-  };
+  userAuthenticated: boolean = false;
 
-  isLoggedIn: boolean = true;
+  setUserAuthenticated = (isAuthenticated: boolean) =>
+    (this.userAuthenticated = isAuthenticated);
 
-  async logIn(navigate: NavigateFunction) {
-    const [err, res] = await to(authService.logIn());
-    if (err || !res) return navigate("/login");
-    runInAction(() => (this.isLoggedIn = true));
-    this.userData = res.data as IUserData;
-    navigate("/home");
-  }
+  userData: IUserData | null = null;
 
-  handleNavigation(navigate: NavigateFunction, pathname: string) {
-    if (!this.isLoggedIn) return navigate("/login", { replace: true });
-    if (pathname === "/") return navigate("/home", { replace: true });
+  setUserData(user: IUserData) {
+    this.userData = user;
   }
 }
 
